@@ -6,10 +6,12 @@ namespace Proyectoprogreso2
     public partial class MenuUsuario : ContentPage
     {
         private readonly APIService _ApiService;
-        public MenuUsuario(APIService apiservice)
+        public  MenuUsuario(APIService apiservice)
         {
-            InitializeComponent();
             _ApiService = apiservice;
+
+            InitializeComponent();
+            
         }
 
         private async void OnAdministrarPerfilClicked(object sender, EventArgs e)

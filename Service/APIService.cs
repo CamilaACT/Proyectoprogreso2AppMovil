@@ -47,7 +47,7 @@ namespace Proyectoprogreso2.Service
                 ProductoColorTalla producto = JsonConvert.DeserializeObject<ProductoColorTalla>(json_response);
                 return producto;
             }
-            return new ProductoColorTalla();
+            return null;
         }
 
         public async Task<List<ProductoColorTalla>> GetProductos()

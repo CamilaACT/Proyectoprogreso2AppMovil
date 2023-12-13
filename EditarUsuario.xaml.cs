@@ -1,5 +1,6 @@
 using Proyectoprogreso2.Models;
 using Proyectoprogreso2.Service;
+using System.Collections.ObjectModel;
 
 namespace Proyectoprogreso2;
 
@@ -12,7 +13,20 @@ public partial class EditarUsuario : ContentPage
         InitializeComponent();
         _ApiService = apiservice;
     }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        int idclient = Preferences.Get("idusuario", 0);
+        _cliente= await _ApiService.GetCliente(idclient);
+        ID.Text= _cliente.IdCliente.ToString();
+        Apellido.Text=_cliente.Apellido;
+        Nombre.Text=_cliente.Nombre;
+        Direccion.Text=_cliente.Direccion;
+        Tarjeta.Text=_cliente.NumeroTarjeta.ToString();
+        NombreU.Text=_cliente.Login;
+        Contraseña.Text=_cliente.Contrasenia;
 
+    }
     private async void OnClickLogin(object sender, EventArgs e)
     {
         await Navigation.PopAsync();

@@ -7,6 +7,7 @@ namespace Proyectoprogreso2;
 public partial class ListaCarrito : ContentPage
 {
     private readonly APIService _ApiService;
+    public double totalpreciof;
     public ListaCarrito(APIService apiservice)
 	{
 		InitializeComponent();
@@ -21,6 +22,7 @@ public partial class ListaCarrito : ContentPage
         ListaViewCarrito.ItemsSource = products;
         var totalprecio = await _ApiService.GetPrecioTotal(idintencioncompra);
         PrecioTotalCompra.Text= totalprecio.ToString();
+        totalpreciof=totalprecio;
     }
 
     private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -42,10 +44,17 @@ public partial class ListaCarrito : ContentPage
         ListaViewCarrito.SelectedItem = null;
     }
     private async void ComprarClick(object sender, EventArgs e)
-    { 
+    {
+        if (totalpreciof==0)
+        {
+            await DisplayAlert("Ashhhhh", "Primero agrega cosas a tu carrito :/", "OK");
+        }
+        else
+        {
+            await Navigation.PushAsync(new ConfirmacionCompra(_ApiService));
+        }
 
-
-        await Navigation.PushAsync(new ConfirmacionCompra(_ApiService));
+        
 
     }
 

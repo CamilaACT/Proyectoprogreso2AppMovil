@@ -68,7 +68,7 @@
 
                             <Label Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="{Binding ProductoColorTalla.idProductoColorTalla}"
+                                   Text="{Binding ProductoColorTalla.Producto.nombre}"
                                    FontSize="20"
                                    FontAttributes="Bold"
                                    TextColor="Black"
@@ -91,18 +91,34 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- Label encima del botón -->
-        <Label x:Name="PrecioTotalCompra"
+        <!-- Label encima del botón
+        <StackLayout Orientation="Horizontal"
+             Spacing="10">
+    <Label Text="ID:"
+           FontSize="15"
+           TextColor="Gray" />
+    <Label Text="{Binding idProductoColorTalla}"
+           FontSize="15"
+           TextColor="Black" />
+</StackLayout>-->
+        <StackLayout Orientation="Horizontal"
+                     Spacing="10">
+            <Label Text="Valor total del carrito:"
+                   FontSize="15"
+                   TextColor="Gray" />
+            <Label x:Name="PrecioTotalCompra"
                FontSize="20"
                FontAttributes="Bold"
                TextColor="Black"
                HorizontalOptions="Center" />
+        </StackLayout>
 
         <!-- Botón en la parte del centro inferior -->
         <Button Text="Comprar"
                 VerticalOptions="EndAndExpand"
                 HorizontalOptions="Center"
                 Margin="0,0,0,20"
-                Clicked="ComprarClick" />
+                Clicked="ComprarClick"
+                CornerRadius="50"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -40,29 +40,47 @@ public partial class DetalleProductoPage : ContentPage
 
     private async void OnClickAgregarAlCarrito(object sender, EventArgs e)
     {
-        //toma el indice del picker y suma uno para saber la cantidad que mando el usuario
-        var cantidadSeleccionada = CantidadPicker.SelectedIndex;
-        var cantidad = cantidadSeleccionada+1;
 
-        int idintencioncompra = Preferences.Get("CodigoIntencion", 0);
-
-
-
-        IntencionDescripcionDTO intencionCompra = new IntencionDescripcionDTO
+        int usuarioid = Preferences.Get("idusuario", 0);
+        if (usuarioid==0)
         {
-           Cantidad = cantidad,
-           ProductoColorTallaIdProductoColorTalla = _producto.idProductoColorTalla,
-           IntencionCompraIdIntencionCompra = idintencioncompra,
-        };
-        
-        IntencionDescripcion intenciondescipcion = await _ApiService.PostIntencionDescripcion(intencionCompra);
-        await DisplayAlert("Yeiii", "Agregaste el producto a tu carrito con éxito", "OK");
-        await Navigation.PopAsync();
+            Navigation.PushAsync(new LoginPage(_ApiService));
+        }
+        else
+        {
+           
+            //toma el indice del picker y suma uno para saber la cantidad que mando el usuario
+            var cantidadSeleccionada = CantidadPicker.SelectedIndex;
+            var cantidad = cantidadSeleccionada+1;
 
-        //var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Usuario o contraseña incorrecta", ToastDuration.Short, 14);
+            if (cantidad==0)
+            {
+                await DisplayAlert("Esperaaa", "Agrega algo al carrito primero :)", "OK");
+            }
+            else
+            {
 
-        //await toast.Show();
 
+                int idintencioncompra = Preferences.Get("CodigoIntencion", 0);
+
+
+
+                IntencionDescripcionDTO intencionCompra = new IntencionDescripcionDTO
+                {
+                    Cantidad = cantidad,
+                    ProductoColorTallaIdProductoColorTalla = _producto.idProductoColorTalla,
+                    IntencionCompraIdIntencionCompra = idintencioncompra,
+                };
+
+                IntencionDescripcion intenciondescipcion = await _ApiService.PostIntencionDescripcion(intencionCompra);
+                await DisplayAlert("Yeiii", "Agregaste el producto a tu carrito con éxito", "OK");
+                await Navigation.PopAsync();
+
+                //var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Usuario o contraseña incorrecta", ToastDuration.Short, 14);
+
+                //await toast.Show();
+            }
+        }
     }
 
     private void CargarNumerosEnPicker()

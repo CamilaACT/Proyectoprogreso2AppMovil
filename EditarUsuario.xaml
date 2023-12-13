@@ -12,7 +12,7 @@
         <HorizontalStackLayout HorizontalOptions="Center">
 
             <Label FontAttributes="Bold"
-                   Text="Registrarse"
+                   Text="Editar"
                    FontSize="30"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
@@ -20,24 +20,24 @@
         </HorizontalStackLayout>
         <TableView>
             <TableRoot>
-                <TableSection Title="Regístrate"
+                <TableSection Title="Editar"
                               TextColor="Red">
 
-                    <EntryCell x:Name="ID"
+                    <EntryCell x:Name="ID" Label="ID: "
                                Placeholder="Cédula" />
-                    <EntryCell x:Name="Nombre"
+                    <EntryCell x:Name="Nombre"  Label="Nombre: "
                                Placeholder="Nombre" />
 
-                    <EntryCell x:Name="Apellido"
+                    <EntryCell x:Name="Apellido" Label="Apellido: "
                                Placeholder="Apellido" />
-                    <EntryCell x:Name="Direccion"
+                    <EntryCell x:Name="Direccion" Label="Dirección: "
                                Placeholder="Dirección" />
-                    <EntryCell x:Name="Tarjeta"
+                    <EntryCell x:Name="Tarjeta" Label="Tarjeta:"
                                Placeholder="Número de tarjeta" />
 
-                    <EntryCell x:Name="NombreU"
+                    <EntryCell x:Name="NombreU" Label="Usuario: "
                                Placeholder="Nombre de Usuario" />
-                    <EntryCell x:Name="Contraseña"
+                    <EntryCell x:Name="Contraseña" Label="Contraseña: "
                                Placeholder="Contraseña" />
 
                 </TableSection>
@@ -51,7 +51,7 @@
 
             <Label Text="         " />
 
-            <Button Text="Registrarse"
+            <Button Text="Editar :)"
                     Clicked="OnClickRegistrarse"
                     BackgroundColor="Black"
                     CornerRadius="50" />

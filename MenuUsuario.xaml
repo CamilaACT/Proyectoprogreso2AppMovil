@@ -23,7 +23,7 @@
                 Margin="20,0,20,10"
                 Clicked="OnAdministrarPerfilClicked" />
 
-        <Button Text="Visualizar Factura"
+        <Button Text="Visualizar Facturas"
                 FontSize="18"
                 BackgroundColor="White"
                 TextColor="Black"
@@ -32,10 +32,11 @@
 
         <Button Text="Cerrar Sesión"
                 FontSize="18"
-                BackgroundColor="White"
-                TextColor="Red"
+                BackgroundColor="Black"
+                TextColor="White"
                 Margin="20,0,20,10"
-                Clicked="OnCerrarSesionClicked" />
+                Clicked="OnCerrarSesionClicked" 
+                CornerRadius="50"/>
 
     </StackLayout>
 

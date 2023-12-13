@@ -22,20 +22,22 @@ public partial class LoginPage : ContentPage
             IntencionCompraDTO intencion = new IntencionCompraDTO
             {
                 ClienteIdCliente=clie.IdCliente,
-                Fecha="HOY"
+                Fecha="11/12/2023"
 
             };
             IntencionCompra intencionrespuesta = await _ApiService.PostIntencionCompra(intencion);
 
             Preferences.Set("idusuario", clie.IdCliente);
             Preferences.Set("CodigoIntencion", intencionrespuesta.IdIntencionCompra);
+            NombreU.Text="";
+            Contraseña.Text="";
             await Navigation.PushAsync(new ProductoPage(_ApiService));
         }
         else
         {
-            var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Usuario o contraseña incorrecta", ToastDuration.Short, 14);
+            await DisplayAlert("Lo sentimos", "Usuario o contraseña incorrectos", "OK");
 
-            await toast.Show();
+            
         }
     }
 

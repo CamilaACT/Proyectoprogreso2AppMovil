@@ -8,7 +8,7 @@ namespace Proyectoprogreso2
         {
             InitializeComponent();
             APIService ApiService = new APIService();
-            MainPage = new NavigationPage(new LoginPage(ApiService));
+            MainPage = new NavigationPage(new ProductoPage(ApiService));
         }
     }
 }

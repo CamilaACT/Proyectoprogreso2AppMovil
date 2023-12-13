@@ -72,7 +72,7 @@ public partial class ConfirmacionCompra : ContentPage
             };
             IntencionCompra intencionrespuesta = await _ApiService.PostIntencionCompra(intencion);
             Preferences.Set("CodigoIntencion", intencionrespuesta.IdIntencionCompra);
-            await Navigation.PopAsync();
+            await Navigation.PopToRootAsync();
         }
         else
         {
