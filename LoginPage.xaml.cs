@@ -16,28 +16,36 @@ public partial class LoginPage : ContentPage
 
     private async void OnClickLogin(object sender, EventArgs e)
     {
-        Cliente clie = await _ApiService.GetUsuario(NombreU.Text, Contraseña.Text);
-        if (clie != null)
+        if (string.IsNullOrWhiteSpace(NombreU.Text) || string.IsNullOrWhiteSpace(Contraseña.Text))
         {
-            IntencionCompraDTO intencion = new IntencionCompraDTO
-            {
-                ClienteIdCliente=clie.IdCliente,
-                Fecha="11/12/2023"
-
-            };
-            IntencionCompra intencionrespuesta = await _ApiService.PostIntencionCompra(intencion);
-
-            Preferences.Set("idusuario", clie.IdCliente);
-            Preferences.Set("CodigoIntencion", intencionrespuesta.IdIntencionCompra);
-            NombreU.Text="";
-            Contraseña.Text="";
-            await Navigation.PushAsync(new ProductoPage(_ApiService));
+            await DisplayAlert("Campos vacíos", "Por favor, complete todos los campos.", "OK");
+            
         }
         else
         {
-            await DisplayAlert("Lo sentimos", "Usuario o contraseña incorrectos", "OK");
+            Cliente clie = await _ApiService.GetUsuario(NombreU.Text, Contraseña.Text);
+            if (clie != null)
+            {
+                IntencionCompraDTO intencion = new IntencionCompraDTO
+                {
+                    ClienteIdCliente=clie.IdCliente,
+                    Fecha="13/12/2023"
 
-            
+                };
+                IntencionCompra intencionrespuesta = await _ApiService.PostIntencionCompra(intencion);
+
+                Preferences.Set("idusuario", clie.IdCliente);
+                Preferences.Set("CodigoIntencion", intencionrespuesta.IdIntencionCompra);
+                NombreU.Text="";
+                Contraseña.Text="";
+                await Navigation.PushAsync(new ProductoPage(_ApiService));
+            }
+            else
+            {
+                await DisplayAlert("Lo sentimos", "Usuario o contraseña incorrectos", "OK");
+
+
+            }
         }
     }
 

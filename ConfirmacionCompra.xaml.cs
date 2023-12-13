@@ -67,7 +67,7 @@ public partial class ConfirmacionCompra : ContentPage
             IntencionCompraDTO intencion = new IntencionCompraDTO
             {
                 ClienteIdCliente=idCliente,
-                Fecha="HOY"
+                Fecha="13/12/2023"
 
             };
             IntencionCompra intencionrespuesta = await _ApiService.PostIntencionCompra(intencion);
