@@ -1,7 +1,7 @@
 using Proyectoprogreso2.Models;
 using Proyectoprogreso2.Service;
 using System.Collections.ObjectModel;
-using static Java.Util.Jar.Attributes;
+
 
 namespace Proyectoprogreso2;
 

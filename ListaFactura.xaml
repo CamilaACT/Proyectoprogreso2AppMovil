@@ -4,6 +4,7 @@
              x:Class="Proyectoprogreso2.ListaFactura"
              Title="ListaViewFactura">
 
+    <ScrollView>
     <VerticalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="Center"
@@ -44,5 +45,6 @@
             </ListView.ItemTemplate>
         </ListView>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
 

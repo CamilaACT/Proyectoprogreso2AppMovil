@@ -4,8 +4,9 @@
              x:Class="Proyectoprogreso2.DetalleFactura"
              Title="DetalleFactura">
     <VerticalStackLayout>
+     
 
-        <HorizontalStackLayout HorizontalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="Center">
 
             <Label FontAttributes="Bold"
                    Text="Carrito"
